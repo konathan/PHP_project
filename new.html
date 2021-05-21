@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
+    <title>Add User</title>
+</head>
+
+<body>
+    <div class="container">
+        <form action="new.php" method="post">
+            <div class="row row-content align-items-center justify-content-center">
+                <div class="col-12">
+                    <button id="cancel_button" onclick="goBack()"> <i class="fa fa-times"></i> </button>
+                </div>
+            </div><br />
+            <div class="row row-content align-items-center justify-content-center">
+                <div class="col-12">
+                    <h3>New User</h3>
+                </div>
+                <hr><br />
+                <div class="row row-content align-items-center justify-content-center">
+                    <div class="col-12">
+                        <label for="fn">
+                            First Name
+                        </label>
+                        <input type="text" name="fn" required><br /><br />
+                    </div>
+                </div>
+            </div>
+            <div class="row row-content align-items-center justify-content-center">
+                <div class="col-12">
+                    <label for="ln">
+                        Last Name
+                    </label>
+                    <input type="text" name="ln" required><br /><br />
+                </div>
+            </div>
+            <br /><br />
+            <div class="row row-content align-items-center justify-content-center">
+                <div class="col-12">
+                    <label for="mail">
+                        Email
+                    </label>
+                    <input type="email" name="mail" required><br /><br />
+                </div>
+                <br /><br />
+                <div class="row row-content align-items-center justify-content-center">
+                    <div class="col-12">
+                        <label for="pass">
+                            Password
+                        </label>
+                        <input type="password" name="pass" required><br /><br />
+                    </div>
+                    <br /><br />
+                    <div class="col-12">
+                        <label for="c_pass">
+                            Confirm Password
+                        </label>
+                        <input type="password" name="c_pass" required><br /><br />
+                    </div>
+                    <br /><br />
+                    <div class="col-12">
+                        <label for="t">
+                            User Type
+                        </label>
+                        <select name="t">
+                            <option value="employee">employee</option>
+                            <option value="admin">admin</option>
+                        </select>
+                    </div>
+                    <br /><br />
+                    <div class="row row-content align-items-center justify-content-center">
+                        <div class="col-12">
+                            <input type="submit" name="create" value="Create">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function goBack() {
+          window.history.back();
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
+    <title>Application Form</title>
+</head>
+
+<body>
+    <div class="container">
+        <form action="app_sub.php" method="post">
+            <div class="row row-content align-items-center justify-content-center">
+                <div class="col-12">
+                    <button id="cancel_button" onclick="goBack()"> <i class="fa fa-times"></i> </button>
+                </div>
+            </div><br />
+            <div class="row row-content align-items-center justify-content-center">
+                <div class="col-12">
+                    <h3>Application Form</h3>
+                </div>
+                <hr><br />
+                <div class="row row-content align-items-center justify-content-center">
+                    <div class="col-12">
+                        <label for="start">
+                            Start Date
+                        </label>
+                        <input type="date" name="start" required><br /><br />
+                    </div>
+                </div>
+            </div>
+            <div class="row row-content align-items-center justify-content-center">
+                <div class="col-12">
+                    <label for="end">
+                        End Date
+                    </label>
+                    <input type="date" name="end" required><br /><br />
+                </div>
+            </div>
+            <br /><br />
+            <div class="row row-content align-items-center justify-content-center">
+                <div class="col-12">
+                    <label for="reason">
+                        Reason
+                    </label>
+                    <textarea rows="4" cols="50" name="reason" required></textarea><br /><br />
+                </div>
+                <br /><br />
+                <div class="row row-content align-items-center justify-content-center">
+                    <div class="col-12">
+                        <input type="submit" name="app_sub" value="Submit">
+                    </div>
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+
+</body>
+
+</html>
