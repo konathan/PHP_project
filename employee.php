@@ -10,9 +10,10 @@
   <title>Employee's Page</title>
 </head>
 <body>
+
 <form action="app_form.html" method="post">
         <input id="add_button" type="submit" name="app" value="Submit Request">
-    </form>
+</form>
     <table cellpadding = "10" cellspacing="20">
     <tr>
     <th> </th>

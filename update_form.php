@@ -67,8 +67,8 @@
                             User Type
                         </label>
                         <select name="type">
-                            <option value="admin">admin</option>
                             <option value="employee">employee</option>
+                            <option value="admin">admin</option>
                         </select>
                     </div>
                     <br /><br />

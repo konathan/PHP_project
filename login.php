@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,7 +39,11 @@ try {
       $u_id=$user_id[$i];
       $full_name = $first_name[$i]. " " .$last_name[$i];
       $user_mail = $email[$i];
-      $u_type=$type[$i];
+      $u_type = $type[$i];
+      $_SESSION['u_id'] = $u_id;
+      $_SESSION['full_name'] = $full_name;
+      $_SESSION['user_mail'] = $user_mail;
+      $_SESSION['u_type'] = $u_type;
       break;
     } 
     else {
@@ -50,8 +58,8 @@ try {
 
     while ($row=$result->fetch()) {
       $date_sub[]=$row['date_sub'];
-      $start_date[]=$row['start_date'];
-      $end_date[]=$row['end_date'];
+      $start_date[]=$row['vac_start'];
+      $end_date[]=$row['vac_end'];
       $days_in_total[]=$row['days_in_total'];
       $status[]=$row['app_status'];
     }

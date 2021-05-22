@@ -12,38 +12,37 @@
     <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
 </head>
 
-<body>
+<body background="images/wallpaper.jpg">
     <div class="container">
-        <form id="forma" action="login.php" method="post">
+        <form id="forma" action="login.php" method="post"  style="background:linear-gradient(rgb(167, 165, 165),rgb(194, 192, 192),white,white,white,white,white);">
             <div class="row row-content align-items-center justify-content-center">
                 <div class="col-12">
-                    <h3>Log In</h3>
+                    <h2>Log In</h2>
                 </div>
+            </div>
                 <hr><br />
                 <div class="row row-content align-items-center justify-content-center">
                     <div class="col-12">
-                        <label for="user_email">
-                            <i class="fa fa-user icon"></i>
-                        </label>
-                        <input class="index_form" type="email" name="user_email" placeholder="youremail@mail.com"
-                            required><br /><br />
+                        <label for="user_email"></label>
+                        <i class="fa fa-user icon"></i><input class="index_form" type="email" name="user_email" placeholder="user@mail.com"
+                            required autofocus="autofocus"><br /><br />
                     </div>
+                </div>
+            <div class="row row-content align-items-center justify-content-center">
+                <div class="col-12">
+                    <label for="user_password"></label>
+                    <i class="fa fa-lock icon"></i><input class="index_form" type="password" name="user_password" placeholder="Password" required><br /><br />
                 </div>
             </div>
             <div class="row row-content align-items-center justify-content-center">
-                <div class="col-12">
-                    <label for="user_password">
-                        <i class="fa fa-lock icon"></i>
-                    </label>
-                    <input class="index_form" type="password" name="user_password" placeholder="Password" required><br /><br />
-                </div>
+                <div class="col-12"><h3> </h3></div>
+            </div>
                 <br /><br />
                 <div class="row row-content align-items-center justify-content-center">
                     <div class="col-12">
-                        <input id="submit_button" type="submit" name="submit" value="Log In">
+                        <input id="login_button" type="submit" name="submit" value="Log In">
                     </div>
                 </div>
-            </div>
         </form>
     </div>
 </body>

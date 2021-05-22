@@ -13,7 +13,7 @@
     <form action="new.html" method="post">
         <input id="add_button" type="submit" name="new" value="Add User">
     </form>
-    <table cellpadding = "10" cellspacing="20">
+    <table id="users_table" cellpadding = "10" cellspacing="20">
     <tr>
     <th> ID</th>
     <th> First Name</th>
@@ -25,23 +25,26 @@
 
     <?php
     for ($j=0; $j<count($email); $j++) {
+        $row_id = "row_" .strval($j);
         echo "<tr>";
         echo "<td>" .$user_id[$j] ."</td>";
-        echo "<td>" .$first_name[$j] ."</td>";
-        echo "<td>" .$last_name[$j] ."</td>";
-        echo "<td>" .$email[$j] ."</td>";
-        echo "<td>" .$type[$j] ."</td>";
-        echo "<td> <button onclick='onClick(this)'> Update </button> </td>";
+        echo "<td id=" .$row_id. "_0>" .$first_name[$j] ."</td>";
+        echo "<td id=" .$row_id. "_1>" .$last_name[$j] ."</td>";
+        echo "<td id=" .$row_id. "_2>" .$email[$j] ."</td>";
+        echo "<td id=" .$row_id. "_3>" .$type[$j] ."</td>";
+        echo "<td> <a href='update_form.php'><button onclick='onClick(this)'> Update </button></a> </td>";
         echo "</tr>"; 
     }
+    
+    echo '<script type="text/Javascript">
+    function onClick(btn) {    
+        var y=[];
+        for ($q=0; $q<4; $q++) {
+            y[$q] = document.getElementById("row_" .srtval($q));
+        }
+    }
+    <script>';
     ?>
-
-<script type="text/Javascript">
-function onClick(e) {
-    var currentRow = $(e).closest('tr');
-    alert(currentRow.id);
-}
-<script>
     
 </table>
 </body>

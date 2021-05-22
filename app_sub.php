@@ -1,28 +1,50 @@
 <?php
+session_start();
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Employee's Page</title>
+</head>
+<body>
+<?php
 
 if(isset($_POST['app_sub'])) {
+  try{
     $sub_date = date('Y-m-d');
+    $start = date_create($_POST['start']);
+    $end = date_create($_POST['end']);
+    $total_days = date_diff($start,$end);
+    $total = intval($total_days->format('%a'));
     $start = $_POST['start'];
     $end = $_POST['end'];
-    $total_days = date_diff($start,$end);
-    $total_days = $total_days->format("%a");
     $reason = $_POST['reason'];
     $app_status = "Pending";
 
-    $pdo = new PDO('mysql:host=localhost;dbname=employee_vacation','root','password');
-    $query = "INSERT INTO vacation (date_sub, start_date, end_date, days_in_total, reason, app_status, used_id) VALUES ('$sub_date', '$start', '$end', '$total_days', '$reason', '$app_status', '$u_id')";
-    $pdo->exec($query);
+    $u_id = intval($_SESSION['u_id']);
+    $full_name = $_SESSION['full_name'];
+    $user_mail = $_SESSION['user_mail'];
+    $u_type = $_SESSION['u_type'];
 
-    $query = 'SELECT * FROM users';
+    $pdo = new PDO('mysql:host=localhost;dbname=employee_vacation','root','password');
+    $query = "INSERT INTO vacation (date_sub, vac_start, vac_end, days_in_total, reason, app_status, user_id) VALUES ('$sub_date', '$start', '$end', '$total', '$reason', '$app_status', '$u_id')";
+    $result = $pdo->exec($query);
+
+    $query = "SELECT * FROM vacation WHERE vacation.user_id = " .$u_id. " ORDER BY date_sub DESC";
     $result = $pdo->query($query);
 
     while ($row=$result->fetch()) {
         $date_sub[]=$row['date_sub'];
-        $start_date[]=$row['start_date'];
-        $end_date[]=$row['end_date'];
+        $start_date[]=$row['vac_start'];
+        $end_date[]=$row['vac_end'];
         $days_in_total[]=$row['days_in_total'];
         $status[]=$row['app_status'];
       }
+      
     include 'employee.php';
 
     $query = "SELECT vac_id FROM vacation WHERE vacation.user_id = " .$u_id. "AND date_sub = " .$sub_date;
@@ -68,4 +90,12 @@ $headers .= 'From: ' .$user_mail. "\r\n";
 mail($to,$subject,$message,$headers);
 }
 
+catch (PDOException $e) {
+  $output='Connection Failed';
+  echo "$output";
+}
+}
+
 ?>
+</body>
+</html>

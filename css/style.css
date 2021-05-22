@@ -5,7 +5,15 @@ body {
 table {
     margin-left: auto;
     margin-right: auto;
-    text-align: left;
+    text-align: left
+}
+
+td {
+    border-top: 1px solid #dee2e6;
+}
+
+tr:hover {
+    background-color: #dee2e6e5;
 }
 
 .container {
@@ -13,39 +21,64 @@ table {
 }
 
 .index_form {
-    padding-top: 5px;
+    padding: 7px 10px 7px 10px;
     border: 1px solid #7a7a7a;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.index_form:focus {
+  box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+  border: 1px solid rgba(81, 203, 238, 1);
 }
 
 .icon {
-    padding: 5px 10px 5px 10px;
+    padding: 6px 10px 8px 10px;
     border: 1px solid #7a7a7a;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
 }
 
 #forma {
-    position: relative;
-    width: 80%;
+    float: right;
+    width: 300px;
+    height: 280px;
     padding: 10px 20px 20px 20px;
     border-width: 5px;
     border-color: #dddddd;
     border-radius: 10px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.7);
+    background-color: #f7f4f4;
     align-self: center;
 }
 
 #p_form {
-    background-color: #f5f5f5;
+    background-color: #f7f4f4;
 }
 
-#submit_button {
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    color: white;
-    background-color: rgb(56, 139, 247);
-    padding: 10px 10px 10px 10px;
-    border-radius: 10px;
-    border-color: rgb(56, 139, 247);
+#login_button {
+    position: fixed;
+    right: 230px;
+    bottom: 200px;
+    width: 100px;
+    box-shadow:inset 0px 1px 0px 0px #bbdaf7;
+	background:linear-gradient(to bottom, #79bbff 5%, #378de5 100%);
+	background-color:#79bbff;
+	border-radius:6px;
+	border:1px solid #84bbf3;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:14px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #528ecc;
+}
+
+#login_button:hover {
+	background:linear-gradient(to bottom, #378de5 5%, #79bbff 100%);
+	background-color:#378de5;
 }
 
 #add_button {
