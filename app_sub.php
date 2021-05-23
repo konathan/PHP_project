@@ -25,16 +25,17 @@ if(isset($_POST['app_sub'])) {
     $reason = $_POST['reason'];
     $app_status = "Pending";
 
-    $u_id = intval($_SESSION['u_id']);
-    $full_name = $_SESSION['full_name'];
-    $user_mail = $_SESSION['user_mail'];
-    $u_type = $_SESSION['u_type'];
+    // $u_id = $_SESSION['u_id'];
+    // $full_name = $_SESSION['full_name'];
+    // $user_mail = $_SESSION['user_mail'];
+    // $u_type = $_SESSION['u_type'];
+    echo $u_id;
 
     $pdo = new PDO('mysql:host=localhost;dbname=employee_vacation','root','password');
     $query = "INSERT INTO vacation (date_sub, vac_start, vac_end, days_in_total, reason, app_status, user_id) VALUES ('$sub_date', '$start', '$end', '$total', '$reason', '$app_status', '$u_id')";
     $result = $pdo->exec($query);
 
-    $query = "SELECT * FROM vacation WHERE vacation.user_id = " .$u_id. " ORDER BY date_sub DESC";
+    $query = "SELECT * FROM vacation WHERE vacation.user_id = '$u_id' ORDER BY vac_id DESC";
     $result = $pdo->query($query);
 
     while ($row=$result->fetch()) {
@@ -47,11 +48,11 @@ if(isset($_POST['app_sub'])) {
       
     include 'employee.php';
 
-    $query = "SELECT vac_id FROM vacation WHERE vacation.user_id = " .$u_id. "AND date_sub = " .$sub_date;
+    $query = "SELECT vac_id FROM vacation WHERE vacation.user_id = '$u_id' AND date_sub = '$sub_date'";
     $result = $pdo->query($query);
 
     while ($row=$result->fetch()) {
-    $app_id = $row['vac_id'];
+    $app_id[] = $row['vac_id'];
     }    
 
 $reason = wordwrap($reason,50,"<br>\n");

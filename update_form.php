@@ -8,34 +8,66 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/style.css">
-    <title>Create new User</title>
+    <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
+    <title>Update User</title>
 </head>
 
 <body>
     <div class="container">
         <?php
-        echo 
-        '<form action="update_db.php" method="post">
+        try{
+            $pdo = new PDO('mysql:host=localhost;dbname=employee_vacation','root','password');
+            $query = 'SELECT * FROM users';
+            $result = $pdo->query($query);
+
+            while ($row=$result->fetch()) {
+            $user_id[]=$row['user_id'];
+            }
+
+            for ($k=0; $k<count($user_id); $k++) {
+                $btn_id = "btn_" .strval($k);
+                $up_u_id = "id_" .strval($k);
+                if (isset($_POST["$btn_id"])) {
+                    $j = $_POST["$up_u_id"];
+                    
+                    $query = 'SELECT * FROM users WHERE user_id=' .$j;
+                    $result = $pdo->query($query);
+                    
+                    while ($row=$result->fetch()) {
+                        $first_name[]=$row['first_name'];
+                        $last_name[]=$row['last_name'];
+                        $email[]=$row['email'];
+                        }
+                    break;
+                }
+            }
+            echo '<form action="update_db.php" method="post">
+            <div class="row row-content align-items-center justify-content-center">
+                <div class="col-12">
+                    <button id="cancel_button" onclick="goBack()"> <i class="fa fa-times"></i> </button>
+                </div>
+            </div><br />
             <div class="row row-content align-items-center justify-content-center">
                 <div class="col-12">
                     <h3>Update User</h3>
                 </div>
+            </div>
                 <hr><br />
                 <div class="row row-content align-items-center justify-content-center">
                     <div class="col-12">
                         <label for="first_name">
                             First Name
                         </label>
-                        <input type="text" name="first_name" value=$....... required><br /><br />
+                        <input type="hidden" name="hidden_id" value=' .$j. '>
+                        <input type="text" name="first_name" value=' .$first_name[0]. ' required><br /><br />
                     </div>
                 </div>
-            </div>
             <div class="row row-content align-items-center justify-content-center">
                 <div class="col-12">
                     <label for="last_name">
                         Last Name
                     </label>
-                    <input type="text" name="last_name" required><br /><br />
+                    <input type="text" name="last_name" value=' .$last_name[0]. ' required><br /><br />
                 </div>
             </div>
             <br /><br />
@@ -44,8 +76,9 @@
                     <label for="email">
                         Email
                     </label>
-                    <input type="email" name="email" required><br /><br />
+                    <input type="email" name="email" value=' .$email[0]. ' required><br /><br />
                 </div>
+            </div>
                 <br /><br />
                 <div class="row row-content align-items-center justify-content-center">
                     <div class="col-12">
@@ -54,14 +87,18 @@
                         </label>
                         <input type="password" name="pass" required><br /><br />
                     </div>
+                </div>
                     <br /><br />
+                    <div class="row row-content align-items-center justify-content-center">
                     <div class="col-12">
                         <label for="c_pass">
                             Confirm Password
                         </label>
                         <input type="password" name="c_pass" required><br /><br />
                     </div>
+                    </div>
                     <br /><br />
+                    <div class="row row-content align-items-center justify-content-center">
                     <div class="col-12">
                         <label for="type">
                             User Type
@@ -71,17 +108,28 @@
                             <option value="admin">admin</option>
                         </select>
                     </div>
+                    </div>
                     <br /><br />
                     <div class="row row-content align-items-center justify-content-center">
                         <div class="col-12">
-                            <input type="submit" name="create" value="Create">
+                            <input type="submit" name="update" value="Update">
                         </div>
                     </div>
-                </div>
-            </div>
         </form>';
+        }
+        catch (PDOException $e) {
+            $output='Connection Failed';
+            echo "$output";
+          }
+
         ?>
     </div>
-</body>
 
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+
+</body>
 </html>

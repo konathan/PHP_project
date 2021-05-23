@@ -53,7 +53,7 @@ try {
 
   if ($k==0) {
     if ($u_type == 'employee') {
-    $query = 'SELECT * FROM vacation WHERE vacation.user_id = ' .$u_id. ' ORDER BY date_sub DESC';
+    $query = 'SELECT * FROM vacation WHERE vacation.user_id = ' .$u_id. ' ORDER BY vac_id DESC';
     $result = $pdo->query($query);
 
     while ($row=$result->fetch()) {

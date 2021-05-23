@@ -25,25 +25,19 @@
 
     <?php
     for ($j=0; $j<count($email); $j++) {
-        $row_id = "row_" .strval($j);
+        $btn_id = "btn_" .strval($j);
+        $up_u_id = "id_" .strval($j);
         echo "<tr>";
         echo "<td>" .$user_id[$j] ."</td>";
-        echo "<td id=" .$row_id. "_0>" .$first_name[$j] ."</td>";
-        echo "<td id=" .$row_id. "_1>" .$last_name[$j] ."</td>";
-        echo "<td id=" .$row_id. "_2>" .$email[$j] ."</td>";
-        echo "<td id=" .$row_id. "_3>" .$type[$j] ."</td>";
-        echo "<td> <a href='update_form.php'><button onclick='onClick(this)'> Update </button></a> </td>";
+        echo "<td>" .$first_name[$j] ."</td>";
+        echo "<td>" .$last_name[$j] ."</td>";
+        echo "<td>" .$email[$j] ."</td>";
+        echo "<td>" .$type[$j] ."</td>";
+        echo "<td> <form action='update_form.php' method='post'>
+        <input type='hidden' name=" .$up_u_id. " value=" .$user_id[$j]. ">
+        <input type='submit' name=" .$btn_id. " value='Update'></td>";
         echo "</tr>"; 
     }
-    
-    echo '<script type="text/Javascript">
-    function onClick(btn) {    
-        var y=[];
-        for ($q=0; $q<4; $q++) {
-            y[$q] = document.getElementById("row_" .srtval($q));
-        }
-    }
-    <script>';
     ?>
     
 </table>
