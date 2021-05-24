@@ -1,23 +1,76 @@
+a, a:active {
+    color: black;
+}
+
 body {
     font-family: 'Roboto', sans-serif;
 }
 
+label {
+    float: left;
+    width: 150px;
+    padding-right: 10px;
+    font-weight: bold;
+}
+
 table {
-    margin-left: auto;
-    margin-right: auto;
-    text-align: left
+    margin-top: 70px;
+    width: 100%;
+    text-align: left;
+    border-collapse: collapse;
+}
+
+textarea {
+    width: 40%;
+}
+
+textarea:focus {
+    box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+    border: 1px solid rgba(81, 203, 238, 1);
+}
+
+th {
+    background-color: rgb(156, 156, 156);
+    padding: 25px 15px;
 }
 
 td {
-    border-top: 1px solid #dee2e6;
+    padding: 25px 15px;
+    border-top: 1px solid #5555556c;
 }
 
-tr:hover {
+.approve_btn {
+    color: white;
+    background-color: rgb(34, 148, 40);
+    border: 1px solid rgb(34, 148, 40);
+    border-radius: 5px;
+}
+
+.back_grad {
+    background-image: linear-gradient(147deg, #000000 0%, #04619f 74%);
+    height: 674px;
+}
+
+.even {
     background-color: #dee2e6e5;
 }
 
-.container {
-    padding: 200px;
+.even:hover {
+    background-color: #add6ffe5;
+}
+
+.form_container {
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+    padding-top: 50px;
+}
+
+.icon {
+    padding: 6px 10px 8px 10px;
+    border: 1px solid #7a7a7a;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
 }
 
 .index_form {
@@ -32,11 +85,67 @@ tr:hover {
   border: 1px solid rgba(81, 203, 238, 1);
 }
 
-.icon {
-    padding: 6px 10px 8px 10px;
-    border: 1px solid #7a7a7a;
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
+.login_container {
+    padding: 200px;
+}
+
+.odd {
+    background-color: rgb(187, 184, 184);
+}
+
+.odd:hover {
+    background-color: #62adf8e5;
+}
+
+.reject_btn {
+    color: white;
+    background-color: #bd2a2a;
+    border: 1px solid #bd2a2a;
+    border-radius: 5px;
+}
+
+.submit_btn {
+    float: right;
+    height: 30px !important;
+    box-shadow: inset 0px 1px 0px 0px #a4e271;
+	background: linear-gradient(to bottom, #89c403 5%, #77a809 100%);
+	background-color: #89c403;
+	border-radius: 6px;
+	border: 1px solid #74b807;
+	display: block;
+	cursor: pointer;
+	color: #ffffff;
+	font-family: Arial;
+	font-size: 15px;
+	font-weight: bold;
+	padding: 6px 24px;
+	text-shadow: 0px 1px 0px #528009;
+}
+
+.update_btn {
+    box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background:linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
+	background-color:#ffffff;
+	border-radius:6px;
+	border:1px solid #dcdcdc;
+	display:inline-block;
+	cursor:pointer;
+	color:#666666;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+}
+
+.update_btn:hover {
+    background:linear-gradient(to bottom, #f6f6f6 5%, #ffffff 100%);
+    background-color:#f6f6f6;
+}
+
+.upper_btn {
+    margin: 40px 0px;
 }
 
 #forma {
@@ -48,12 +157,52 @@ tr:hover {
     border-color: #dddddd;
     border-radius: 10px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.7);
-    background-color: #f7f4f4;
     align-self: center;
 }
 
 #p_form {
     background-color: #f7f4f4;
+}
+
+#add_button {
+    position: absolute;
+    top: 2%;
+    right: 10%;
+    background: linear-gradient(to bottom, #33bdef 5%, #019ad2 100%);
+    background-color: #33bdef;
+    border-radius: 15px;
+    border: 1px solid #057fd0;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family:Arial;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 8px 25px;   
+}
+
+#add_button:hover {
+    background:linear-gradient(to bottom, #019ad2 5%, #33bdef 100%);
+    background-color:#019ad2;
+}
+
+#cancel_button {
+    float: right;
+	box-shadow: inset 0px 1px 0px 0px #ffffff;
+	background: linear-gradient(to bottom, #ededed 5%, #dfdfdf 100%);
+	background-color: #ededed;
+	border-radius: 6px;
+	border: 1px solid #dcdcdc;
+	display: block;
+	cursor: pointer;
+	color: #777777;
+	padding: 6px 10px;
+	text-shadow: 0px 1px 0px #ffffff;
+}
+
+#cancel_button:active {
+	position:relative;
+	top:1px;
 }
 
 #login_button {
@@ -81,14 +230,24 @@ tr:hover {
 	background-color:#378de5;
 }
 
-#add_button {
-    background-color: rgb(56, 139, 247);
-    color: white;
-    padding: 10px 10px 10px 10px;
+#s_form {
+    margin-left: auto;
+    margin-right: auto;
+    height: 40%;
+    width: 500px;
+    background-color: white;
+    padding: 20px 20px 60px 20px;
+    border: 1px solid rgb(88, 87, 87);
     border-radius: 10px;
-    border-color: rgb(56, 139, 247);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.7);
 }
 
-#cancel_button {
-    background-color: white;
+#s_form input {
+    height: 25px;
+    border-radius: 3px 3px 3px 3px;
+}
+
+#s_form input:focus {
+    box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+    border: 1px solid rgba(81, 203, 238, 1);
 }
