@@ -12,7 +12,7 @@
     <title>Update User</title>
 </head>
 
-<body>
+<body class="back_grad">
     <div class="container">
         <?php
         try{
@@ -41,10 +41,10 @@
                     break;
                 }
             }
-            echo '<form action="update_db.php" method="post">
+            echo '<form id="s_form" action="update_db.php" method="post">
             <div class="row row-content align-items-center justify-content-center">
                 <div class="col-12">
-                    <button id="cancel_button" onclick="goBack()"> <i class="fa fa-times"></i> </button>
+                <button id="cancel_button"><a href="cancel_admin.php"> <i class="fa fa-times"></i></a> </button>
                 </div>
             </div><br />
             <div class="row row-content align-items-center justify-content-center">
@@ -62,6 +62,7 @@
                         <input type="text" name="first_name" value=' .$first_name[0]. ' required><br /><br />
                     </div>
                 </div>
+                <br /><br />
             <div class="row row-content align-items-center justify-content-center">
                 <div class="col-12">
                     <label for="last_name">
@@ -112,7 +113,7 @@
                     <br /><br />
                     <div class="row row-content align-items-center justify-content-center">
                         <div class="col-12">
-                            <input type="submit" name="update" value="Update">
+                            <input class="submit_btn" type="submit" name="update" value="Update">
                         </div>
                     </div>
         </form>';
@@ -124,12 +125,5 @@
 
         ?>
     </div>
-
-    <script>
-        function goBack() {
-            window.history.back();
-        }
-    </script>
-
 </body>
 </html>

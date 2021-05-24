@@ -12,12 +12,12 @@
     <title>Application Form</title>
 </head>
 
-<body>
-    <div class="container">
-        <form action="app_sub.php" method="post">
+<body class="back_grad">
+    <div class="form_container">
+        <form id="s_form" action="app_sub.php" method="post">
             <div class="row row-content align-items-center justify-content-center">
                 <div class="col-12">
-                    <button id="cancel_button" onclick="goBack()"> <i class="fa fa-times"></i> </button>
+                    <button id="cancel_button"><a href="cancel_employee.php"> <i class="fa fa-times"></i></a> </button>
                 </div>
             </div><br />
             <div class="row row-content align-items-center justify-content-center">
@@ -48,25 +48,19 @@
                     <label for="reason">
                         Reason
                     </label>
+                    </div>
+                    <div class="col-12">
                     <textarea rows="4" cols="50" name="reason" required></textarea><br /><br />
                 </div>
                 <br /><br />
                 <div class="row row-content align-items-center justify-content-center">
                     <div class="col-12">
-                        <input type="submit" name="app_sub" value="Submit">
+                        <input class="submit_btn" type="submit" name="app_sub" value="Submit">
                     </div>
                 </div>
             </div>
 
         </form>
     </div>
-
-    <script>
-        function goBack() {
-            window.history.back();
-        }
-    </script>
-
 </body>
-
 </html>

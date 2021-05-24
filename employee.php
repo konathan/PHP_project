@@ -9,10 +9,10 @@
   <link rel="stylesheet" type="text/css" href="css/style.css">
   <title>Employee's Page</title>
 </head>
-<body>
 
+<body style="background-color: rgba(0, 0, 0, 0.8);">
 <form action="app_form.html" method="post">
-        <input id="add_button" type="submit" name="app" value="Submit Request">
+  <input id="add_button" type="submit" name="app" value="Submit Request">
 </form>
     <table cellpadding = "10" cellspacing="20">
     <tr>
@@ -29,8 +29,15 @@
 $a=0;
 
 for ($j=0; $j<count($date_sub); $j++) {
+  if ($j==0 || $j%2==0) {
+    $tr_class = "even";
+  }
+  elseif ($j==1 || $j%2!=0) {
+    $tr_class = "odd";
+  
+  }
   $a = $j +1;
-  echo "<tr>";
+  echo "<tr class=" .$tr_class. ">";
   echo "<td>". $a ."</td>";
   $a = date_create($date_sub[$j]);
   echo "<td>" .date_format($a, 'd/m/Y') ."</td>";

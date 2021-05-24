@@ -1,14 +1,31 @@
 <?php
+    session_start();
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <title>Asnwer</title>
+</head>
+<body>
+
+<?php
 try {
     $pdo = new PDO('mysql:host=localhost;dbname=employee_vacation','root','password');
     
     if (isset($_POST['approve'])) {
         $final = "Approve";
-        $query = "UPDATE vacation (app_status) VALUES ('$final') WHERE vacation.user_id = " .$u_id. "AND vac_id = " .$app_id;
+        $query = "UPDATE vacation (app_status) VALUES ('$final') WHERE vacation.user_id = " .$u_id. "AND vac_id = " .$_SESSION['app_id'];
     }
     elseif (isset($_POST['reject'])) {
         $final = "Reject";
-        $query = "UPDATE vacation (app_status) VALUES ('$final') WHERE vacation.user_id = " .$u_id. "AND vac_id = " .$app_id;
+        $query = "UPDATE vacation (app_status) VALUES ('$final') WHERE vacation.user_id = " .$u_id. "AND vac_id = " .$_SESSION['app_id'];
     }
 
 $to = $user_mail;
@@ -21,7 +38,7 @@ $message = "
 </head>
 <body>
 <p>Dear employee, your supervisor has <b>" .$final. "</b> your application <br />
-submitted on " .$sub_date. ".
+submitted on " .$_SESSION['sub_date']. ".
 </p>
 </body>
 </html>
@@ -42,3 +59,6 @@ catch (PDOException $e) {
 }
 
 ?>
+
+</body>
+</html>

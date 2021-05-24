@@ -12,12 +12,12 @@
     <title>Add User</title>
 </head>
 
-<body>
+<body class="back_grad">
     <div class="container">
-        <form action="new.php" method="post">
+        <form id="s_form" action="new.php" method="post">
             <div class="row row-content align-items-center justify-content-center">
                 <div class="col-12">
-                    <button id="cancel_button" onclick="goBack()"> <i class="fa fa-times"></i> </button>
+                    <button id="cancel_button"><a href="cancel_admin.php"> <i class="fa fa-times"></i> </a></button>
                 </div>
             </div><br />
             <div class="row row-content align-items-center justify-content-center">
@@ -34,6 +34,7 @@
                     <input type="text" name="fn" required><br /><br />
                 </div>
             </div>
+            <br /> <br />
             <div class="row row-content align-items-center justify-content-center">
                 <div class="col-12">
                     <label for="ln">
@@ -84,18 +85,10 @@
             <br /><br />
             <div class="row row-content align-items-center justify-content-center">
                 <div class="col-12">
-                    <input type="submit" name="create" value="Create">
+                    <input class="submit_btn" type="submit" name="create" value="Create">
                 </div>
             </div>
         </form>
     </div>
-
-    <script>
-        function goBack() {
-            window.history.back();
-        }
-    </script>
-
 </body>
-
 </html>

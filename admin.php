@@ -9,11 +9,12 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <title>Admin's Page</title>
 </head>
-<body>
-    <form action="new.html" method="post">
+
+<body style="background-color: rgba(0, 0, 0, 0.8);">
+    <form class="upper_btn" action="new.html" method="post">
         <input id="add_button" type="submit" name="new" value="Add User">
     </form>
-    <table id="users_table" cellpadding = "10" cellspacing="20">
+    <table cellpadding = "10" cellspacing="20">
     <tr>
     <th> ID</th>
     <th> First Name</th>
@@ -25,9 +26,15 @@
 
     <?php
     for ($j=0; $j<count($email); $j++) {
+        if ($j==0 || $j%2==0) {
+            $tr_class = "even";
+        }
+        elseif ($j==1 || $j%2!=0) {
+            $tr_class = "odd";
+        }
         $btn_id = "btn_" .strval($j);
         $up_u_id = "id_" .strval($j);
-        echo "<tr>";
+        echo "<tr class=" .$tr_class. ">";
         echo "<td>" .$user_id[$j] ."</td>";
         echo "<td>" .$first_name[$j] ."</td>";
         echo "<td>" .$last_name[$j] ."</td>";
@@ -35,7 +42,7 @@
         echo "<td>" .$type[$j] ."</td>";
         echo "<td> <form action='update_form.php' method='post'>
         <input type='hidden' name=" .$up_u_id. " value=" .$user_id[$j]. ">
-        <input type='submit' name=" .$btn_id. " value='Update'></td>";
+        <input class='update_btn' type='submit' name=" .$btn_id. " value='Update'></td>";
         echo "</tr>"; 
     }
     ?>

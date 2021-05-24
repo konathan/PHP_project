@@ -9,6 +9,9 @@ session_start();
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Employee's Page</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
 <?php
@@ -25,14 +28,13 @@ if(isset($_POST['app_sub'])) {
     $reason = $_POST['reason'];
     $app_status = "Pending";
 
-    // $u_id = $_SESSION['u_id'];
-    // $full_name = $_SESSION['full_name'];
-    // $user_mail = $_SESSION['user_mail'];
-    // $u_type = $_SESSION['u_type'];
-    echo $u_id;
+    $u_id = $_SESSION['u_id'];
+    $full_name = $_SESSION['full_name'];
+    $user_mail = $_SESSION['user_mail'];
+    $u_type = $_SESSION['u_type'];
 
     $pdo = new PDO('mysql:host=localhost;dbname=employee_vacation','root','password');
-    $query = "INSERT INTO vacation (date_sub, vac_start, vac_end, days_in_total, reason, app_status, user_id) VALUES ('$sub_date', '$start', '$end', '$total', '$reason', '$app_status', '$u_id')";
+    $query = "INSERT INTO vacation (date_sub, vac_start, vac_end, days_in_total, reason, app_status, user_id) VALUES ('$sub_date', '$start', '$end', '$total', '$reason', '$app_status', $u_id)";
     $result = $pdo->exec($query);
 
     $query = "SELECT * FROM vacation WHERE vacation.user_id = '$u_id' ORDER BY vac_id DESC";
@@ -53,7 +55,11 @@ if(isset($_POST['app_sub'])) {
 
     while ($row=$result->fetch()) {
     $app_id[] = $row['vac_id'];
-    }    
+    }  
+    
+    $_SESSION['sub_date'] = $sub_date;
+    $_SESSION['app_id'] = $app_id[0];
+
 
 $reason = wordwrap($reason,50,"<br>\n");
 
@@ -67,15 +73,15 @@ $message = "
 </head>
 <body>
 <p>Dear supervisor, employee " .$full_name. " requested for some time off, <br />
-starting on <b>" .$start. "</b> and ending on <b>" .$end. "<b/> stating the reason: <br /> <i>" .$reason.
+starting on <b>" .$start. "</b> and ending on <b>" .$end. "</b> stating the reason: <br /> <i>" .$reason.
 "</i> <br /><br />
 Click on one of the below links to approve or reject the application
 </p>
 <form action='answer.php' method='post'>
-<input type='submit' name='approve' value='Approve'>
-</form>
+<input class='approve_btn' type='submit' name='approve' value='Approve'>
+</form><br />
 <form action='answer.php' method='post'>
-<input type='submit' name='reject' value='Reject'>
+<input class='reject_btn' type='submit' name='reject' value='Reject'>
 </form>
 </body>
 </html>
@@ -86,7 +92,7 @@ $headers = "MIME-Version: 1.0" . "\r\n";
 $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 
 // More headers
-$headers .= 'From: ' .$user_mail. "\r\n";
+$headers .= 'From: ' .$full_name. "\r\n";
 
 mail($to,$subject,$message,$headers);
 }
