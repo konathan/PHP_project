@@ -12,8 +12,8 @@ CREATE TABLE users (
 CREATE TABLE vacation (
     vac_id INT AUTO_INCREMENT PRIMARY KEY,
     date_sub DATE NOT NULL,
-    start_date DATE NOT NULL,
-    end_date DATE NOT NULL,
+    vac_start DATE NOT NULL,
+    vac_end DATE NOT NULL,
     days_in_total INT NOT NULL,
     reason VARCHAR(255) NOT NULL,
     app_status VARCHAR(225) NOT NULL,
